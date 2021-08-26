@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.ResinTimeViewHolder> {
 
-    private ArrayList<ResinTime> resinTimesArrayList;
+    private ArrayList<ResinTime> resinTimesArrayList = new ArrayList<>();
     private Context context;
 
     public ResinTimeAdapter(Context context, ArrayList<ResinTime> resinTimesArrayList){
@@ -29,7 +30,12 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
     }
 
     @Override
-    public ResinTimeViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public int getItemCount() {
+        return resinTimesArrayList.size();
+    }
+
+    @Override
+    public ResinTimeAdapter.ResinTimeViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_resin_entry, parent, false);
 
         ResinTimeViewHolder resinTimeViewHolder = new ResinTimeViewHolder(view);
@@ -38,7 +44,7 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
     }
 
     @Override
-    public void onBindViewHolder(ResinTimeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResinTimeViewHolder holder, int position) {
         holder.tvTimeToGetResinAmount.setText(resinTimesArrayList.get(position).getTimeToGetResinAmount());
         holder.tvResinAmount.setText(Integer.toString(resinTimesArrayList.get(position).getFutureResinAmount()));
         holder.acbResinReminder.setOnClickListener( v -> {
@@ -71,8 +77,5 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
             acbResinReminder = view.findViewById(R.id.acbResinReminder);
         }
     }
-    @Override
-    public int getItemCount() {
-        return resinTimesArrayList.size();
-    }
+
 }
