@@ -34,11 +34,7 @@ public class FarmFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
-
+    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentFarmBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -55,9 +51,9 @@ public class FarmFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.tvDateToday.setText("Today is a "+this.formattedDate);
+        binding.tvDateToday.setText("Today is a "+this.formattedDate+" below are the farmables for today:");
     }
 
     @Override

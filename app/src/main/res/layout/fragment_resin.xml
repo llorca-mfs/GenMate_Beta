@@ -3,41 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.resin.ResinFragment">
+    android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/ivResin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:src="@drawable/resin"
-        app:layout_constraintBottom_toTopOf="@id/resinInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/etCurResinInput"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acbCalculateResinTimes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="Calculate Resin Times"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/etCurResinInput"
+        />
 
     <EditText
-        android:id="@+id/resinInput"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:hint="Enter current resin amount"
-        android:inputType="number"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348" />
-
-    <TextView
-        android:id="@+id/currentTimeText"
-        android:text="Current Time Here"
+        android:id="@+id/etCurResinInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="Enter current Resin Amount"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resinInput"
-        tools:layout_editor_absoluteY="292dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:textAlignment="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvForResinTimes"
+        android:layout_width="wrap_content"
+        android:layout_height="330dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acbCalculateResinTimes" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
