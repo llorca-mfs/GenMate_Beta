@@ -57,8 +57,8 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
 
                     long timeAtButtonClick = System.currentTimeMillis();
 
-                    long durationOfGoalResinInMillis = 1000;
-//                    long durationOfGoalResinInMillis = 1000 * 60 * resinTimesArrayList.get(position).getMinsTilResinAmount();
+//                    long durationOfGoalResinInMillis = 1000;
+                    long durationOfGoalResinInMillis = 1000 * 60 * resinTimesArrayList.get(position).getMinsTilResinAmount();
 
                     alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + durationOfGoalResinInMillis, pendingIntent);
                 }
