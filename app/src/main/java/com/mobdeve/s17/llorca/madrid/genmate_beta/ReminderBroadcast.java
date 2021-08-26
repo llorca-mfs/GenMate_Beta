@@ -1,6 +1,5 @@
 package com.mobdeve.s17.llorca.madrid.genmate_beta;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyUserResin")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyGenMateUserResin")
                 .setSmallIcon(R.drawable.resin)
                 .setContentTitle("GENMATE Reminder")
                 .setContentText("Your Resin has Replenished to your desired amount")

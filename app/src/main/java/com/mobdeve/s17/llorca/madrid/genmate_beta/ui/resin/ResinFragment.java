@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class ResinFragment extends Fragment implements View.OnClickListener{
 
@@ -33,38 +33,32 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         createNotificationChannel();
-
         binding = FragmentResinBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final RecyclerView recyclerView = binding.rvForResinTimes;
-
         binding.acbCalculateResinTimes.setOnClickListener(this);
 
-        resinTimeAdapter = new ResinTimeAdapter(getActivity().getApplicationContext(), resinTimesList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        recyclerView.setAdapter(resinTimeAdapter);
+        binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        binding.rvForResinTimes.setAdapter(resinTimeAdapter);
 
         return root;
 
     }
 
-    /*
-    * @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_resin);
-        createNotificationChannel();
-        binding = FragmentResinBinding.inflate(getLayoutInflater());
-        View mainView = binding.getRoot();
-        setContentView(mainView);
-
-        binding.acbCalculateResinTimes.setOnClickListener(this);
-        resinTimeAdapter = new ResinTimeAdapter(getApplicationContext(), resinTimesList);
-        binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        binding.rvForResinTimes.setAdapter(resinTimeAdapter);
-    }
-    * */
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.fragment_resin);
+//        createNotificationChannel();
+//        binding = FragmentResinBinding.inflate(getLayoutInflater());
+//        View mainView = binding.getRoot();
+//        setContentView(mainView);
+//
+//        binding.acbCalculateResinTimes.setOnClickListener(this);
+//        resinTimeAdapter = new ResinTimeAdapter(getApplicationContext(), resinTimesList);
+//        binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        binding.rvForResinTimes.setAdapter(resinTimeAdapter);
+//    }
 
 
     private void calculateResinTimes(){
@@ -88,14 +82,14 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
         for (int i = parsedCurAmountResin; i <=160; i++){
             if (i % 20 == 0 && i != 0 && i != parsedCurAmountResin){
                 resinTimesList.add(new ResinTime(sdf.format(currentTimeNow.getTime()), i, minuteCounter));
-
-                resinTimeAdapter = new ResinTimeAdapter(getActivity().getApplicationContext(), resinTimesList);
-                binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-                binding.rvForResinTimes.setAdapter(resinTimeAdapter);
             }
             currentTimeNow.add(Calendar.MINUTE, 8);
             minuteCounter += 8;
         }
+
+        resinTimeAdapter = new ResinTimeAdapter(getActivity().getApplicationContext(), resinTimesList);
+        binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        binding.rvForResinTimes.setAdapter(resinTimeAdapter);
 
     }
 
@@ -111,7 +105,7 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
             CharSequence name = "GenMateReminderChannel";
             String description = "Channel for GenMate Reminder";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel ("notifyUserResin", name, importance);
+            NotificationChannel channel = new NotificationChannel ("notifyGenMateUserResin", name, importance);
 
             NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

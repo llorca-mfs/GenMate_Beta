@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.ResinTimeViewHolder> {
 
-    private ArrayList<ResinTime> resinTimesArrayList = new ArrayList<>();
+    private ArrayList<ResinTime> resinTimesArrayList;
     private Context context;
 
     public ResinTimeAdapter(Context context, ArrayList<ResinTime> resinTimesArrayList){
@@ -44,7 +44,7 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResinTimeViewHolder holder, int position) {
+    public void onBindViewHolder(ResinTimeViewHolder holder, int position) {
         holder.tvTimeToGetResinAmount.setText(resinTimesArrayList.get(position).getTimeToGetResinAmount());
         holder.tvResinAmount.setText(Integer.toString(resinTimesArrayList.get(position).getFutureResinAmount()));
         holder.acbResinReminder.setOnClickListener( v -> {
@@ -57,7 +57,8 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
 
                     long timeAtButtonClick = System.currentTimeMillis();
 
-                    long durationOfGoalResinInMillis = 1000 * 60 * resinTimesArrayList.get(position).getMinsTilResinAmount();
+                    long durationOfGoalResinInMillis = 1000;
+//                    long durationOfGoalResinInMillis = 1000 * 60 * resinTimesArrayList.get(position).getMinsTilResinAmount();
 
                     alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + durationOfGoalResinInMillis, pendingIntent);
                 }
