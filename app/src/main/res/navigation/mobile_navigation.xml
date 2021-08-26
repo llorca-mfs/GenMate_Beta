@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_farm">
+
+    <fragment
+        android:id="@+id/nav_farm"
+        android:name="com.mobdeve.s17.llorca.madrid.genmate_beta.ui.farm.FarmFragment"
+        android:label="@string/menu_farm"
+        tools:layout="@layout/fragment_farm" />
+
+    <fragment
+        android:id="@+id/nav_crit"
+        android:name="com.mobdeve.s17.llorca.madrid.genmate_beta.ui.crit.CritFragment"
+        android:label="@string/menu_crit"
+        tools:layout="@layout/fragment_crit" />
+
+    <fragment
+        android:id="@+id/nav_resin"
+        android:name="com.mobdeve.s17.llorca.madrid.genmate_beta.ui.resin.ResinFragment"
+        android:label="@string/menu_resin"
+        tools:layout="@layout/fragment_resin" />
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.mobdeve.s17.llorca.madrid.genmate_beta.ui.map.MapFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_map" />
+
+
+</navigation>

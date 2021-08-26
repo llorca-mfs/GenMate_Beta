@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/activity_nfc.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/layout/fragment_crit.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/layout/fragment_farm.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/layout/fragment_resin.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/layout/item_farmable.xml" value="0.286231884057971" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.291213768115942" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3536458333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

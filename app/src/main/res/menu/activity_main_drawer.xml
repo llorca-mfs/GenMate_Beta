@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_farm"
+            android:icon="@drawable/ic_farmables"
+            android:title="@string/menu_farm"/>
+        <item
+            android:id="@+id/nav_resin"
+            android:icon="@drawable/ic_resin"
+            android:title="@string/menu_resin"/>
+        <item
+            android:id="@+id/nav_crit"
+            android:icon="@drawable/ic_calculator"
+            android:title="@string/menu_crit" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_map"
+            android:title="@string/menu_map" />
+    </group>
+</menu>
