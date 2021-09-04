@@ -29,6 +29,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_nfc" />
+        app:srcCompat="@drawable/ic_qr" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
