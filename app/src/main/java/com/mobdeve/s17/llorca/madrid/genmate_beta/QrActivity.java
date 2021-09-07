@@ -1,5 +1,6 @@
 package com.mobdeve.s17.llorca.madrid.genmate_beta;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,6 +30,11 @@ public class QrActivity extends AppCompatActivity {
         qrListAdapter = new QrListAdapter(getApplicationContext(),qrListItemArrayList);
         binding.rvUid.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.rvUid.setAdapter(qrListAdapter);
+
+        binding.btnCamera.setOnClickListener(v -> {
+            Intent intent = new Intent(QrActivity.this, QrCameraActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void populateList(){
