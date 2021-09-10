@@ -29,7 +29,7 @@ public class QrActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //populateList();
-        init();
+
 
         /*
         QrListDAO qrListDAO = new QrListDAOSQLImpl(getApplicationContext());
@@ -40,6 +40,12 @@ public class QrActivity extends AppCompatActivity {
             Intent intent = new Intent(QrActivity.this, QrCameraActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        init();
     }
 
     private void init(){

@@ -129,7 +129,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
 
         if(qrInfoDelimit[0].equals("GMmbdv")){
             QrListDAO qrListDAO = new QrListDAOSQLImpl(getApplicationContext());
-            QrListAdapter qrListAdapter = new QrListAdapter(getApplicationContext(), qrListDAO.getQrFriends());
+            //QrListAdapter qrListAdapter = new QrListAdapter(getApplicationContext(), qrListDAO.getQrFriends());
 
             QrFriend newFriend = new QrFriend();
             newFriend.setId(qrListDAO.getQrFriends().size());
@@ -137,7 +137,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
             newFriend.setUid(qrInfoDelimit[2]);
 
             qrListDAO.addQrFriend(newFriend);
-            qrListAdapter.addQrFriends(qrListDAO.getQrFriends());
+            //qrListAdapter.addQrFriends(qrListDAO.getQrFriends());
 
             Toast.makeText(getApplicationContext(),"Successfully added "+qrInfoDelimit[1]+" to the database!", Toast.LENGTH_LONG).show();
         }

@@ -1,6 +1,7 @@
 package com.mobdeve.s17.llorca.madrid.genmate_beta;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
