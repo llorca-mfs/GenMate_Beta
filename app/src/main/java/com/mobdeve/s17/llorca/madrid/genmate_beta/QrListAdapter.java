@@ -9,15 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobdeve.s17.llorca.madrid.genmate_beta.model.QrFriend;
+
 import java.util.ArrayList;
 
 public class QrListAdapter extends RecyclerView.Adapter<QrListAdapter.QrListViewHolder>{
 
-    private ArrayList<QrListItem> qrListItemArrayList;
+    private ArrayList<QrFriend> qrFriendArrayList;
     private Context context;
 
-    public QrListAdapter(Context context, ArrayList<QrListItem> qrListItemArrayList){
-        this.qrListItemArrayList = qrListItemArrayList;
+    public QrListAdapter(Context context, ArrayList<QrFriend> qrFriendArrayList){
+        this.qrFriendArrayList = qrFriendArrayList;
         this.context = context;
     }
 
@@ -32,13 +34,31 @@ public class QrListAdapter extends RecyclerView.Adapter<QrListAdapter.QrListView
 
     @Override
     public void onBindViewHolder(QrListAdapter.QrListViewHolder holder, int position) {
-        holder.tv_ign_list.setText(qrListItemArrayList.get(position).getIgn());
-        holder.tv_uid_list.setText(qrListItemArrayList.get(position).getUid());
+        holder.tv_ign_list.setText(qrFriendArrayList.get(position).getIgn());
+        holder.tv_uid_list.setText(qrFriendArrayList.get(position).getUid());
     }
 
     @Override
     public int getItemCount() {
-        return qrListItemArrayList.size();
+        return qrFriendArrayList.size();
+    }
+
+    public void addQrFriends(ArrayList<QrFriend> qrFriendArrayList){
+        this.qrFriendArrayList.clear();
+        this.qrFriendArrayList.addAll(qrFriendArrayList);
+        notifyDataSetChanged();
+    }
+
+    public void addQrFriend(QrFriend qrFriend){
+        qrFriendArrayList.add(0,qrFriend);
+        notifyItemInserted(0);
+        notifyDataSetChanged();
+    }
+
+    public void removeQrFriend(int position){
+        qrFriendArrayList.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 
     protected class QrListViewHolder extends RecyclerView.ViewHolder{

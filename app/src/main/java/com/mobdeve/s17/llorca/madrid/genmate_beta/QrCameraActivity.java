@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -14,6 +15,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
+import com.mobdeve.s17.llorca.madrid.genmate_beta.dao.QrListDAO;
+import com.mobdeve.s17.llorca.madrid.genmate_beta.dao.QrListDAOSQLImpl;
+import com.mobdeve.s17.llorca.madrid.genmate_beta.model.QrFriend;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -21,7 +25,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
 
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView ScannerView;
-    private static int cameraInfo = Camera.CameraInfo.CAMERA_FACING_BACK;
+    //private static int cameraInfo = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +37,14 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
         int currApi = Build.VERSION.SDK_INT;
 
         if(currApi >= Build.VERSION_CODES.M){
+            /*
             if(checkPermission()){
                 Toast.makeText(getApplicationContext(),"Permission Granted", Toast.LENGTH_LONG).show();
             }
             else{
+                requestPermission();
+            }*/
+            if(!checkPermission()){
                 requestPermission();
             }
         }
@@ -50,6 +58,8 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
         ActivityCompat.requestPermissions(QrCameraActivity.this, new String[] {Manifest.permission.CAMERA},REQUEST_CAMERA);
     }
 
+
+    /*
     public void onRequestPermissionResult(int requestCode, String permissions[], int[] grantResult){
         switch (requestCode){
             case REQUEST_CAMERA:
@@ -76,7 +86,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
                 break;
         }
     }
-
+    */
     @Override
     public void onResume(){
         super.onResume();
@@ -101,7 +111,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
         ScannerView.stopCamera();
         ScannerView = null;
     }
-
+    /*
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener){
         new AlertDialog.Builder(QrCameraActivity.this)
                 .setMessage(message)
@@ -109,7 +119,7 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
                 .setNegativeButton("Cancel", null)
                 .create()
                 .show();
-    }
+    }*/
 
     @Override
     public void handleResult(Result result) {
@@ -117,9 +127,19 @@ public class QrCameraActivity extends AppCompatActivity implements ZXingScannerV
         String[] qrInfoDelimit = qrInfo.split("/");
 
 
-        if(qrInfoDelimit[0].equals("GenMate")){
-            Toast.makeText(getApplicationContext(),"IGN: "+qrInfoDelimit[1]+", UID: "+qrInfoDelimit[2], Toast.LENGTH_LONG).show();
+        if(qrInfoDelimit[0].equals("GMmbdv")){
+            QrListDAO qrListDAO = new QrListDAOSQLImpl(getApplicationContext());
+            QrListAdapter qrListAdapter = new QrListAdapter(getApplicationContext(), qrListDAO.getQrFriends());
 
+            QrFriend newFriend = new QrFriend();
+            newFriend.setId(qrListDAO.getQrFriends().size());
+            newFriend.setIgn(qrInfoDelimit[1]);
+            newFriend.setUid(qrInfoDelimit[2]);
+
+            qrListDAO.addQrFriend(newFriend);
+            qrListAdapter.addQrFriends(qrListDAO.getQrFriends());
+
+            Toast.makeText(getApplicationContext(),"Successfully added "+qrInfoDelimit[1]+" to the database!", Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(getApplicationContext(),"You have scanned an invalid QR Code", Toast.LENGTH_LONG).show();
