@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:src="@drawable/placeholder"
+        android:src="@android:drawable/ic_menu_help"
         app:layout_constraintTop_toBottomOf="@id/tvQrInfo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -42,6 +42,7 @@
             ="5dp"
         />
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardContain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvUid"
@@ -49,9 +50,24 @@
         android:layout_marginRight="10dp"
         >
 
+        <TextView
+            android:id="@+id/tvNoFriends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="@id/cardContain"
+            android:text="You have not added any of your friends' Genshin Impact UID's to the database. To add a friend, scan their GenMate QR Code"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUid"
-
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

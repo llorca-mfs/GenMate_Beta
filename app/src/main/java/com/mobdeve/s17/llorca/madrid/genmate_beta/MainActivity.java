@@ -1,7 +1,9 @@
 package com.mobdeve.s17.llorca.madrid.genmate_beta;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -22,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    public static final String TAG = "sharedPrefs";
+    public static final String IGN = "ign";
+    public static final String UID = "uid";
+
+    private String ign_set;
+    private String uid_set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    startActivity(new Intent(MainActivity.this, QrActivity.class));
+        binding.appBarMain.fab.setOnClickListener(v -> {
+            if(uid_set.equals("") || ign_set.equals("")){
+                Snackbar.make(v, "Please go to Settings to provide your Genshin Impact account info", Snackbar.LENGTH_LONG).show();
+            }
+            else{
+                startActivity(new Intent(MainActivity.this, QrActivity.class));
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -50,10 +61,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    protected void onStart() {
+        super.onStart();
+        loadData();
+    }
+
+    public void loadData(){
+        SharedPreferences sp = getSharedPreferences(TAG, MODE_PRIVATE);
+        uid_set = sp.getString(UID, "");
+        ign_set = sp.getString(IGN, "");
     }
 
     @Override
@@ -61,5 +77,23 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

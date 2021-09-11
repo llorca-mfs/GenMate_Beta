@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/layout/activity_nfc.xml" value="0.291213768115942" />
         <entry key="app/src/main/res/layout/activity_qr.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.291213768115942" />
         <entry key="app/src/main/res/layout/fragment_crit.xml" value="0.291213768115942" />
         <entry key="app/src/main/res/layout/fragment_farm.xml" value="0.296195652173913" />
@@ -21,6 +22,9 @@
         <entry key="app/src/main/res/layout/item_resin_entry.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.291213768115942" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3536458333333333" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.3541666666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3703125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3703125" />
       </map>
     </option>
   </component>

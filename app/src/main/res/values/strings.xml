@@ -15,4 +15,5 @@
     <string name="menu_crit">Crit Calculator</string>
     <string name="menu_map">Game Map</string>
     <string name="activity_qr">QR Code UID Share</string>
+    <string name="activity_settings">Settings</string>
 </resources>
