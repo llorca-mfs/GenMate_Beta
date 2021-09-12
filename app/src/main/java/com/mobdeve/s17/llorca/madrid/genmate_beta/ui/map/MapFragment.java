@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.mobdeve.s17.llorca.madrid.genmate_beta.R;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.databinding.FragmentMapBinding;
 
 public class MapFragment extends Fragment {
@@ -27,7 +29,7 @@ public class MapFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.textMap.setText("this is map fragment");
+        binding.pvGenshinMap.setImage(ImageSource.resource(R.drawable.teyvat_cc));
     }
 
     @Override
