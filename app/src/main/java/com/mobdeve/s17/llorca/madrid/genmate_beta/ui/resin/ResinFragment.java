@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.R;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.databinding.FragmentFarmBinding;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.databinding.FragmentResinBinding;
@@ -42,7 +44,6 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
         binding.rvForResinTimes.setAdapter(resinTimeAdapter);
 
         return root;
-
     }
 
 //    @Override
@@ -66,7 +67,8 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
         String curAmountResin = binding.etCurResinInput.getText().toString();
 
         if (curAmountResin.matches("") || Integer.parseInt(curAmountResin) < 0 || Integer.parseInt(curAmountResin)>=160) {
-            Toast.makeText(this.getActivity(), "You did not enter a valid resin Amount", Toast.LENGTH_LONG).show();
+            Snackbar mySnackbar = Snackbar.make(binding.getRoot(), "Please provide A valid resin amount", Snackbar.LENGTH_LONG);
+            mySnackbar.show();
             resinTimeAdapter = new ResinTimeAdapter(getActivity().getApplicationContext(), resinTimesList);
             binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
             binding.rvForResinTimes.setAdapter(resinTimeAdapter);

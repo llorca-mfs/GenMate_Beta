@@ -9,14 +9,17 @@
 
     <TextView
         android:id="@+id/tvDateToday"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
 
         android:layout_marginBottom="50dp"
-        android:text="The  Farmables for the day are as follows:"
+        android:text="The Farmables for the day are as follows:"
         android:textColor="@color/black"
 
         android:textStyle="bold"
+        android:textAlignment="center"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
