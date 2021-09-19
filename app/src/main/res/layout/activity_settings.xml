@@ -51,7 +51,6 @@
         android:layout_height="wrap_content"
         android:text="UPDATE ACCOUNT INFO"
         app:layout_constraintTop_toBottomOf="@+id/et_uid"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

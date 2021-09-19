@@ -28,7 +28,7 @@ public class FarmFragment extends Fragment {
     private FragmentFarmBinding binding;
 
     private Date currentDateAndTime = Calendar.getInstance().getTime();
-    private SimpleDateFormat sdf =  new SimpleDateFormat("\nEEEE\nyyyy-MM-dd, HH:mm", Locale.getDefault());
+    private SimpleDateFormat sdf =  new SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault());
     private String formattedDate = sdf.format(currentDateAndTime);
 
     private ArrayList<Farmable> farmablesList;
@@ -55,7 +55,7 @@ public class FarmFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.tvDateToday.setText("Below are the farmables available as of now:" + this.formattedDate);
+        binding.tvDateToday.setText("Today is " + this.formattedDate + ". Right now, you can farm for the following:");
     }
 
     @Override
