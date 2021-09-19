@@ -4,6 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import androidx.fragment.app.Fragment;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.R;
@@ -33,12 +35,24 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
     private ResinTimeAdapter resinTimeAdapter;
     private ArrayList<ResinTime> resinTimesList;
 
+    private int currentResin;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         createNotificationChannel();
         binding = FragmentResinBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        binding.acbCalculateResinTimes.setOnClickListener(this);
+        changeRecView();
+
+        binding.enbResinAmt.setOnClickListener((ElegantNumberButton.OnClickListener) view -> {
+            changeRecView();
+        });
+        /*
+        this.currentResin = Integer.parseInt(binding.enbResinAmt.getNumber());
+
+        calculateResinTimes();*/
+
+        //binding.acbCalculateResinTimes.setOnClickListener(this);
 
         binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         binding.rvForResinTimes.setAdapter(resinTimeAdapter);
@@ -46,43 +60,23 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
         return root;
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_resin);
-//        createNotificationChannel();
-//        binding = FragmentResinBinding.inflate(getLayoutInflater());
-//        View mainView = binding.getRoot();
-//        setContentView(mainView);
-//
-//        binding.acbCalculateResinTimes.setOnClickListener(this);
-//        resinTimeAdapter = new ResinTimeAdapter(getApplicationContext(), resinTimesList);
-//        binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//        binding.rvForResinTimes.setAdapter(resinTimeAdapter);
-//    }
 
+    private void changeRecView(){
+        this.currentResin = Integer.parseInt(binding.enbResinAmt.getNumber());
+        Log.d("TAG","currentResin is "+currentResin);
+        calculateResinTimes(this.currentResin);
+    }
 
-    private void calculateResinTimes(){
+    private void calculateResinTimes(int resinParam){
         resinTimesList = new ArrayList<>();
-        String curAmountResin = binding.etCurResinInput.getText().toString();
 
-        if (curAmountResin.matches("") || Integer.parseInt(curAmountResin) < 0 || Integer.parseInt(curAmountResin)>=160) {
-            Snackbar mySnackbar = Snackbar.make(binding.getRoot(), "Please provide A valid resin amount", Snackbar.LENGTH_LONG);
-            mySnackbar.show();
-            resinTimeAdapter = new ResinTimeAdapter(getActivity().getApplicationContext(), resinTimesList);
-            binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-            binding.rvForResinTimes.setAdapter(resinTimeAdapter);
-            return;
-        }
-
-        int parsedCurAmountResin = Integer.parseInt(binding.etCurResinInput.getText().toString());
         int minuteCounter = 0;
 
         Calendar currentTimeNow = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm a", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, hh:mm a", Locale.getDefault());
 
-        for (int i = parsedCurAmountResin; i <=160; i++){
-            if (i % 20 == 0 && i != 0 && i != parsedCurAmountResin){
+        for (int i = resinParam; i <=160; i++){
+            if (i % 20 == 0 && i != 0 && i != resinParam){
                 resinTimesList.add(new ResinTime(sdf.format(currentTimeNow.getTime()), i, minuteCounter));
             }
             currentTimeNow.add(Calendar.MINUTE, 8);
@@ -93,13 +87,6 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
         binding.rvForResinTimes.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         binding.rvForResinTimes.setAdapter(resinTimeAdapter);
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.acbCalculateResinTimes) {
-            calculateResinTimes();
-        }
     }
 
     private void createNotificationChannel(){
@@ -115,5 +102,8 @@ public class ResinFragment extends Fragment implements View.OnClickListener{
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }
