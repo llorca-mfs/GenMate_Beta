@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="#1f6ca5"
         android:inputType="number"
         android:text="CALCULATE CRIT RATIO SCORE"
         android:textColor="@color/white"
