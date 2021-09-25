@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/activity_main.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/fragment_crit.xml" value="0.33" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/fragment_farm.xml" value="0.27943840579710144" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/fragment_map.xml" value="0.2" />
+        <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/fragment_realm.xml" value="0.291213768115942" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/fragment_resin.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/item_qr_list.xml" value="0.3120471014492754" />
         <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/layout/item_resin_entry.xml" value="0.3875" />
+        <entry key="..\:/Users/Gian/Documents/Main Documents/School/Sophomore College/3rd Term/MOBDEVE/GenMate_Beta/app/src/main/res/menu/activity_main_drawer.xml" value="0.3875" />
         <entry key="app/src/main/res/drawable/ic_nfc.xml" value="0.3703125" />
         <entry key="app/src/main/res/drawable/ic_nfc_big.xml" value="0.3703125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />

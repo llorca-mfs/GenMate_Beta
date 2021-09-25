@@ -29,23 +29,21 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-        android:id="@+id/enbResinAmt"
-        android:layout_width="176dp"
-        android:layout_height="wrap_content"
-        app:textSize="8sp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvResinInfo"
-        app:backGroundColor="@color/purple_500"
-        app:textColor="@color/white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/ivResin"
+<!--    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton-->
+<!--        android:id="@+id/enbResinAmt"-->
+<!--        android:layout_width="176dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:textSize="8sp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvResinInfo"-->
+<!--        app:backGroundColor="@color/purple_500"-->
+<!--        app:textColor="@color/white"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/ivResin"-->
 
-        app:initialNumber="1"
-        app:finalNumber="160"/>
-
-    <!--
+<!--        app:initialNumber="1"-->
+<!--        app:finalNumber="160"/>-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acbCalculateResinTimes"
@@ -66,20 +64,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter current Resin Amount"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        android:textAlignment="center"/>
--->
+        android:inputType="number"
+        android:textAlignment="center"
+        android:layout_marginTop="200dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContain"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
-        app:layout_constraintTop_toBottomOf="@+id/enbResinAmt"
+        android:layout_height="380dp"
+        app:layout_constraintTop_toBottomOf="@+id/acbCalculateResinTimes"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="17dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         >

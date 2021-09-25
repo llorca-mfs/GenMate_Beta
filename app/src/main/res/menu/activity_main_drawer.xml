@@ -20,5 +20,9 @@
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_map"
             android:title="@string/menu_map" />
+        <item
+            android:id="@+id/nav_realm_currency"
+            android:icon="@drawable/realm_coin"
+            android:title="@string/menu_realm" />
     </group>
 </menu>

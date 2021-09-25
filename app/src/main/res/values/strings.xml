@@ -14,6 +14,8 @@
     <string name="menu_resin">Resin Times</string>
     <string name="menu_crit">Crit Calculator</string>
     <string name="menu_map">Game Map</string>
+    <string name="menu_realm">Realm Currency Times</string>
+
     <string name="activity_qr">QR Code UID Share</string>
     <string name="activity_settings">Settings</string>
 

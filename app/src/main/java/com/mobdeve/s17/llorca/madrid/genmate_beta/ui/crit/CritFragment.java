@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.R;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.databinding.FragmentCritBinding;
@@ -18,8 +19,6 @@ import com.mobdeve.s17.llorca.madrid.genmate_beta.ui.resin.ResinTimeAdapter;
 
 public class CritFragment extends Fragment implements View.OnClickListener{
     private FragmentCritBinding binding;
-
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -44,7 +43,8 @@ public class CritFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if (v.getId() == R.id.acbCalculateCritScore) {
             if (binding.etCritRateInput.getText().toString().matches("") || binding.etCritDmgInput.getText().toString().matches("")) {
-                Toast.makeText(getActivity().getApplicationContext(),"Please fill up all the fields!", Toast.LENGTH_LONG).show();
+                Snackbar mySnackbar = Snackbar.make(v, "Please fill up all the text fields ", BaseTransientBottomBar.LENGTH_LONG);
+                mySnackbar.show();
             }
 
             else{

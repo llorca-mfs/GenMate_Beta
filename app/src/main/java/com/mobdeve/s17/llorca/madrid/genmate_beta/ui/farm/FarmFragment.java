@@ -28,7 +28,7 @@ public class FarmFragment extends Fragment {
     private FragmentFarmBinding binding;
 
     private Date currentDateAndTime = Calendar.getInstance().getTime();
-    private SimpleDateFormat sdf =  new SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault());
+    private SimpleDateFormat sdf =  new SimpleDateFormat("EEEE, MMMM dd, yyyy, HH:mm" , Locale.getDefault());
     private String formattedDate = sdf.format(currentDateAndTime);
 
     private ArrayList<Farmable> farmablesList;

@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.R;
 import com.mobdeve.s17.llorca.madrid.genmate_beta.ReminderBroadcast;
 
@@ -48,7 +50,10 @@ public class ResinTimeAdapter extends RecyclerView.Adapter<ResinTimeAdapter.Resi
         holder.tvTimeToGetResinAmount.setText(resinTimesArrayList.get(position).getTimeToGetResinAmount());
         holder.tvResinAmount.setText(Integer.toString(resinTimesArrayList.get(position).getFutureResinAmount()));
         holder.acbResinReminder.setOnClickListener( v -> {
-                    Toast.makeText(context, "Reminder Set", Toast.LENGTH_LONG).show();
+                    Snackbar mySnackbar = Snackbar.make(v, "Reminder Set,  we will remind you when you reach " + Integer.toString(resinTimesArrayList.get(position).getFutureResinAmount()) + " resin", BaseTransientBottomBar.LENGTH_LONG);
+                    mySnackbar.show();
+
+                    holder.acbResinReminder.setEnabled(false);
 
                     Intent intent = new Intent(context, ReminderBroadcast.class);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);

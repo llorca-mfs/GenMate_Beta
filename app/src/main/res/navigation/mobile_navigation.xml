@@ -28,5 +28,11 @@
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_map" />
 
+    <fragment
+        android:id="@+id/nav_realm_currency"
+        android:name="com.mobdeve.s17.llorca.madrid.genmate_beta.ui.realm.RealmFragment"
+        android:label="Realm Currency Times"
+        tools:layout="@layout/fragment_realm" />
+
 
 </navigation>
